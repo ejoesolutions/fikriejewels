@@ -1,0 +1,175 @@
+Tasks [ONGOING] :
+
+☐ check balik loni bleh edit variasi walaupun dh tempah
+☐ ejah buat edit user check username
+✔ check balik edit user, x siap lagi @done(22-10-10 23:21)
+☐ tambah bayaran sebelum ni utk tempahan baru/kedai/baiki
+☐ ejah check balik status variasi lepas tempah/siap
+☐ check balik list stok in utk variasi tempahan baiki
+
+☐ ringkasan
+☐ check dulang
+
+staf view
+✔ search orders @done(22-10-10 22:05)
+
+Tasks [DONE] :
+
+✔ Senarai pengguna ejah table skit @done(22-10-05 14:21)
+✔ Daftar pengguna @done(22-09-25 10:48)
+✔ Belian mungkin tangguh dulu side server @done(22-09-29 16:51)
+✔ nmbr siri pesanan tamboh dale database terus @done(22-09-29 16:51)
+✔ menu utama @done(22-10-05 15:58)
+✔ variasi dipadam @done(22-10-05 16:01)
+✔ tambah kerat @done(22-10-05 16:07)
+✔ cash in @done(22-10-06 16:46)
+✔ customer buat table lain, ejah balik blako @done(22-10-09 19:26)
+✔ batal jualan @done(22-10-09 22:47)
+
+Upgrade [DONE] :
+
+  Section:
+✔ Dashboard @done(22-09-25 10:46)
+✔ Invoice Supplier @done(22-09-25 10:47)
+✔ Belian @done(22-09-25 10:47)
+✔ Tetapan @done(22-09-25 10:48)
+✔ Daftar pengguna @done(22-09-25 10:48)
+✔ Pelanggan @done(22-09-25 10:49)
+✔ Edit Pelanggan @done(22-09-25 10:49)
+✔ Belian / Trade In @done(22-09-25 10:50)
+✔ harga kapital @done(22-09-25 10:51)
+✔ daftar produk @done(22-09-25 10:51)
+✔ kategori/dulang/pembekal @done(22-09-25 10:52)
+✔ check stok @done(22-10-09 17:55)
+
+  Side server table :
+✔ Transaksi @done(22-09-27 10:59)
+✔ Jualan @done(22-09-26 15:47)
+✔ Stok In @done(22-09-26 11:23)
+✔ Stok In Hand @done(22-09-26 11:23)
+✔ Senarai Pesanan @done(22-09-27 15:16)
+☐ Cash In Cash Out
+☐ Senarai Produk
+☐ Tempahan
+✔ Belian / Trade In @done(22-09-28 11:54)
+
+Database [Edited] :   
+
+  ☐ ALTER TABLE `inv_supplier` ADD `per_gram` DECIMAL(10,2) NOT NULL AFTER `supplier`;
+  ☐ ALTER TABLE `inv_supplier` ADD `attach` VARCHAR(255) NULL AFTER `tarikh`, ADD `note` TEXT NULL AFTER `attach`;
+
+  ☐ ALTER TABLE `ci_maklumat` ADD `sistem` VARCHAR(20) NOT NULL AFTER `id`;
+
+NOTE :
+
+  RLSD11P2A product_id 600
+if ($this->data['user_profile'] != 1)
+{
+  return show_404('The page you requested was not found.');
+}
+
+$('#state_select').val(state_id).trigger("change");
+
+0 = barang boleh beli dh
+1 = sold
+2 = keluar
+3 = bayaran belum selesai (deposit)
+4 = 
+5 = tempahan kedai  
+6 = tempahan baru
+7 = tempahan baiki
+8 = tempahan kedai siap
+9 = tempahan baru siap
+10 = tempahan baiki siap
+
+
+data transaksi status
+1 = bayar pesanan
+2 = bayaran belian
+3 = deposit tempahan kedai 
+4 = deposit keluar
+5 = Deposit Tempahan Baru
+6 = Deposit Tempahan Baiki
+7 = bayar Tempahan Baiki
+8 = Cash In
+9 = Cash Out
+10 = expenses
+
+<div class="col-md-6">
+  <label class="control-label">Cawangan</label>
+  <select name="" class="form-control">
+    <option value="">-Pilih-</option>
+    <?php foreach ($cawangan as $key) {
+      echo '<option value="'.$key['id'].'">'.$key['name'].'</option>';
+    } ?>
+  </select>
+</div>
+
+
+<select class="form-select" name="month" required>
+<option value="">-Pilih-</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+
+$('#addPayment').one('submit', function() {
+  $('#submitBtn').attr('disabled','disabled');
+  $("#submitBtn").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sila Tunggu...');
+});
+
+//user xleh tekan enter 
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+//user xleh tekan tab 
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 9) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+
+1. git init
+2. git add .
+3. git commit -m "fist commit
+4. git remote add origin https://github.com/ejoesolutions/halfcut.git
+5. git push -u origin master
+
+
+$customer = array(
+  'name' => strtoupper($this->input->post('full_name')),
+  'phone' => $this->input->post('phone'),
+  'kp' => $this->input->post('kp'),
+  'address' => $this->input->post('address'),
+  'state' => $this->input->post('state'),
+);
+$this->db->insert('customer', $customer);
+$cust_id = $this->db->insert_id();
+
+$this->session->set_flashdata('upload', "<script>
+  Swal.fire({
+    icon: 'success',
+    title: '<h4>Pendaftaran Berjaya</h4>',
+    showConfirmButton: false,
+    timer: 1200
+  })
+</script>");
